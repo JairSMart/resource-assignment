@@ -1,5 +1,5 @@
 # 1. Etapa de compilación con Maven + OpenJDK 17
-FROM maven:3.9.4-openjdk-21 AS build
+FROM maven:3.8.4-openjdk-17 AS build
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY resource-assignment/src ./src
 RUN mvn clean package -DskipTests -B
 
 # 2. Etapa de ejecución con un JRE ligero
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
